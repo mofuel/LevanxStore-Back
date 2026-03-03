@@ -3,8 +3,8 @@ package com.levanxstore.persistence.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "redemptions")
-public class Redemption {
+@Table(name = "marketing_partners")
+public class MarketingPartner extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
