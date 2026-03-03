@@ -2,6 +2,8 @@ package com.levanxstore.persistence.entity;
 
 import jakarta.persistence.*;
 
+@Entity
+@Table(name = "customers")
 public class Customer extends BaseEntity {
 
     @Id
@@ -16,6 +18,9 @@ public class Customer extends BaseEntity {
 
     @Column(nullable = false, unique = true)
     private String phone;
+
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+    private LoyaltyAccount loyaltyAccount;
 
     //Getters and Setters
 
@@ -34,4 +39,8 @@ public class Customer extends BaseEntity {
     public String getPhone() {return phone;}
 
     public void setPhone(String phone) {this.phone = phone;}
+
+    public LoyaltyAccount getLoyaltyAccount() {return loyaltyAccount;}
+
+    public void setLoyaltyAccount(LoyaltyAccount loyaltyAccount) {this.loyaltyAccount = loyaltyAccount;}
 }
