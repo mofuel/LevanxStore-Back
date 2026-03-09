@@ -1,7 +1,6 @@
 package com.levanxstore.persistence.entity;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,8 +18,11 @@ public class Expense extends BaseEntity{
     private Supplier supplier;
 
     private String description;
+
     private Integer quantity;
+
     private Double unitCost;
+
     private Double totalAmount;
 
     @Enumerated(EnumType.STRING)
