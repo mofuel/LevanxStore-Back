@@ -15,5 +15,5 @@ public interface SaleItemRepository {
     List<SaleItemDTO> findBySaleId(Long saleId);
 
     void deleteById(Long id);
-    
+
 }
