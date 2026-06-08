@@ -13,5 +13,5 @@ public interface MarketingPartnerRepository {
     List<MarketingPartnerDTO> findAll();
 
     void deleteById(Long id);
-    
+
 }
