@@ -17,5 +17,5 @@ public interface InvestorRepository {
     Optional<InvestorDTO> findByEmail(String email);
 
     void deleteById(Long id);
-    
+
 }
