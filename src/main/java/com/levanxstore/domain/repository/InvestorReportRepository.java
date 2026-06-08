@@ -17,5 +17,5 @@ public interface InvestorReportRepository {
     List<InvestorReportDTO> findByPeriod(String period);
 
     void deleteById(Long id);
-    
+
 }
