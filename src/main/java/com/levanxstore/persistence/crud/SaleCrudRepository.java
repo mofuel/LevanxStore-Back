@@ -9,5 +9,5 @@ public interface SaleCrudRepository extends JpaRepository<Sale, Long> {
     List<Sale> findByCustomerId(Long customerId);
 
     List<Sale> findByStatus(Sale.SaleStatus status);
-    
+
 }
