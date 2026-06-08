@@ -17,5 +17,5 @@ public interface ExpenseRepository {
     List<ExpenseDTO> findByStatus(String status);
 
     void deleteById(Long id);
-    
+
 }
