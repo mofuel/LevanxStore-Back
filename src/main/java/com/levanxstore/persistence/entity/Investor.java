@@ -3,22 +3,27 @@ package com.levanxstore.persistence.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "investors")
+@Table(name = "investors", indexes = {
+    @Index(name = "idx_investor_phone", columnList = "phone"),
+    @Index(name = "idx_investor_email", columnList = "email")
+})
 public class Investor extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String firstName;
 
+    @Column(nullable = false)
     private String lastName;
 
+    @Column(unique = true)
     private String phone;
 
+    @Column(unique = true)
     private String email;
-
-    //Getters and Setters
 
     public Long getId() {return id;}
 

@@ -1,7 +1,8 @@
 package com.levanxstore.domain.dto;
 
-public class ProductStockDTO {
+import java.math.BigDecimal;
 
+public class ProductStockDTO {
     private Long id;
     private Long productId;
     private String productName;
@@ -9,10 +10,8 @@ public class ProductStockDTO {
     private String modelBrand;
     private String modelName;
     private Integer quantity;
-    private Double costPrice;
-    private Double salePrice;
-
-    //Getters and Setters
+    private BigDecimal costPrice;
+    private BigDecimal salePrice;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -28,10 +27,8 @@ public class ProductStockDTO {
     public void setModelName(String modelName) { this.modelName = modelName; }
     public Integer getQuantity() { return quantity; }
     public void setQuantity(Integer quantity) { this.quantity = quantity; }
-    public Double getCostPrice() { return costPrice; }
-    public void setCostPrice(Double costPrice) { this.costPrice = costPrice; }
-    public Double getSalePrice() { return salePrice; }
-    public void setSalePrice(Double salePrice) { this.salePrice = salePrice; }
-
-    
+    public BigDecimal getCostPrice() { return costPrice; }
+    public void setCostPrice(BigDecimal costPrice) { this.costPrice = costPrice; }
+    public BigDecimal getSalePrice() { return salePrice; }
+    public void setSalePrice(BigDecimal salePrice) { this.salePrice = salePrice; }
 }

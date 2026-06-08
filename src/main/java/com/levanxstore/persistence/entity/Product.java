@@ -3,7 +3,9 @@ package com.levanxstore.persistence.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "products")
+@Table(name = "products", indexes = {
+    @Index(name = "idx_product_category", columnList = "category_id")
+})
 public class Product extends BaseEntity{
 
     @Id
@@ -18,8 +20,6 @@ public class Product extends BaseEntity{
     private Category category;
 
     private Boolean active = true;
-
-    //Getters and Setters
 
     public Long getId() {return id;}
 

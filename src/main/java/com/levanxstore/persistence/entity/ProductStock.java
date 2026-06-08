@@ -1,10 +1,15 @@
 package com.levanxstore.persistence.entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "product_stock",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"product_id", "model_id"}))
+        uniqueConstraints = @UniqueConstraint(columnNames = {"product_id", "model_id"}),
+        indexes = {
+            @Index(name = "idx_product_stock_product", columnList = "product_id"),
+            @Index(name = "idx_product_stock_model", columnList = "model_id")
+        })
 public class ProductStock extends BaseEntity{
 
     @Id
@@ -22,11 +27,11 @@ public class ProductStock extends BaseEntity{
     @Column(nullable = false)
     private Integer quantity;
 
-    @Column(nullable = false)
-    private Double costPrice;
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal costPrice;
 
-    @Column(nullable = false)
-    private Double salePrice;
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal salePrice;
 
     public Long getId() {return id;}
 
@@ -44,11 +49,11 @@ public class ProductStock extends BaseEntity{
 
     public void setQuantity(Integer quantity) {this.quantity = quantity;}
 
-    public Double getSalePrice() {return salePrice;}
+    public BigDecimal getSalePrice() {return salePrice;}
 
-    public void setSalePrice(Double salePrice) {this.salePrice = salePrice;}
+    public void setSalePrice(BigDecimal salePrice) {this.salePrice = salePrice;}
 
-    public Double getCostPrice() {return costPrice;}
+    public BigDecimal getCostPrice() {return costPrice;}
 
-    public void setCostPrice(Double costPrice) {this.costPrice = costPrice;}
+    public void setCostPrice(BigDecimal costPrice) {this.costPrice = costPrice;}
 }

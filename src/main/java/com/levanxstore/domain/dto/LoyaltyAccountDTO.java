@@ -3,15 +3,12 @@ package com.levanxstore.domain.dto;
 import java.time.LocalDateTime;
 
 public class LoyaltyAccountDTO {
-
     private Long id;
     private Long customerId;
     private String customerName;
     private Integer points;
     private String token;
     private LocalDateTime lastPurchaseAt;
-
-    //Getters and Setters
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -25,5 +22,4 @@ public class LoyaltyAccountDTO {
     public void setToken(String token) { this.token = token; }
     public LocalDateTime getLastPurchaseAt() { return lastPurchaseAt; }
     public void setLastPurchaseAt(LocalDateTime lastPurchaseAt) { this.lastPurchaseAt = lastPurchaseAt; }
-
 }

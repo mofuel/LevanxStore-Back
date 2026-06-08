@@ -1,10 +1,14 @@
 package com.levanxstore.persistence.entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
-@Table(name = "sale_items")
-public class SaleItem {
+@Table(name = "sale_items", indexes = {
+    @Index(name = "idx_sale_item_sale", columnList = "sale_id"),
+    @Index(name = "idx_sale_item_stock", columnList = "product_stock_id")
+})
+public class SaleItem extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,14 +22,15 @@ public class SaleItem {
     @JoinColumn(name = "product_stock_id", nullable = false)
     private ProductStock productStock;
 
+    @Column(nullable = false)
     private Integer quantity;
 
-    private Double unitPrice;
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal unitPrice;
 
-    private Double subtotal;
+    @Column(nullable = false, precision = 12, scale = 2)
+    private BigDecimal subtotal;
 
-    //Getters and Setters
-    
     public Long getId() {return id;}
 
     public void setId(Long id) {this.id = id;}
@@ -42,11 +47,11 @@ public class SaleItem {
 
     public void setQuantity(Integer quantity) {this.quantity = quantity;}
 
-    public Double getUnitPrice() {return unitPrice;}
+    public BigDecimal getUnitPrice() {return unitPrice;}
 
-    public void setUnitPrice(Double unitPrice) {this.unitPrice = unitPrice;}
+    public void setUnitPrice(BigDecimal unitPrice) {this.unitPrice = unitPrice;}
 
-    public Double getSubtotal() {return subtotal;}
+    public BigDecimal getSubtotal() {return subtotal;}
 
-    public void setSubtotal(Double subtotal) {this.subtotal = subtotal;}
+    public void setSubtotal(BigDecimal subtotal) {this.subtotal = subtotal;}
 }

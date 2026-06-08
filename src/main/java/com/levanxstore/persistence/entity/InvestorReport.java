@@ -1,9 +1,12 @@
 package com.levanxstore.persistence.entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
-@Table(name = "investor_reports")
+@Table(name = "investor_reports", indexes = {
+    @Index(name = "idx_report_investor", columnList = "investor_id")
+})
 public class InvestorReport extends BaseEntity{
 
     @Id
@@ -16,30 +19,38 @@ public class InvestorReport extends BaseEntity{
 
     private String period; // ejemplo 2025-01
 
-    private Double totalSales;
+    @Column(precision = 14, scale = 2)
+    private BigDecimal totalSales;
 
-    private Double totalProductCost;
+    @Column(precision = 14, scale = 2)
+    private BigDecimal totalProductCost;
 
-    private Double netProfit;
+    @Column(precision = 14, scale = 2)
+    private BigDecimal netProfit;
 
-    private Double investorPercentage;
+    @Column(precision = 5, scale = 2)
+    private BigDecimal investorPercentage;
 
-    private Double investorProfit;
+    @Column(precision = 14, scale = 2)
+    private BigDecimal investorProfit;
 
-    private Double accumulatedProfit;
+    @Column(precision = 14, scale = 2)
+    private BigDecimal accumulatedProfit;
 
-    private Double targetAmount;
+    @Column(precision = 14, scale = 2)
+    private BigDecimal targetAmount;
 
-    private Double remainingToRecover;
+    @Column(precision = 14, scale = 2)
+    private BigDecimal remainingToRecover;
 
-    private Double amountPaid;
+    @Column(precision = 14, scale = 2)
+    private BigDecimal amountPaid;
 
-    private Double pendingBalance;
+    @Column(precision = 14, scale = 2)
+    private BigDecimal pendingBalance;
 
+    @Column(length = 500)
     private String notes;
-
-    //Getters and Setters
-
 
     public Long getId() {return id;}
 
@@ -53,47 +64,47 @@ public class InvestorReport extends BaseEntity{
 
     public void setPeriod(String period) {this.period = period;}
 
-    public Double getTotalSales() {return totalSales;}
+    public BigDecimal getTotalSales() {return totalSales;}
 
-    public void setTotalSales(Double totalSales) {this.totalSales = totalSales;}
+    public void setTotalSales(BigDecimal totalSales) {this.totalSales = totalSales;}
 
-    public Double getTotalProductCost() {return totalProductCost;}
+    public BigDecimal getTotalProductCost() {return totalProductCost;}
 
-    public void setTotalProductCost(Double totalProductCost) {this.totalProductCost = totalProductCost;}
+    public void setTotalProductCost(BigDecimal totalProductCost) {this.totalProductCost = totalProductCost;}
 
-    public Double getNetProfit() {return netProfit;}
+    public BigDecimal getNetProfit() {return netProfit;}
 
-    public void setNetProfit(Double netProfit) {this.netProfit = netProfit;}
+    public void setNetProfit(BigDecimal netProfit) {this.netProfit = netProfit;}
 
-    public Double getInvestorPercentage() {return investorPercentage;}
+    public BigDecimal getInvestorPercentage() {return investorPercentage;}
 
-    public void setInvestorPercentage(Double investorPercentage) {this.investorPercentage = investorPercentage;}
+    public void setInvestorPercentage(BigDecimal investorPercentage) {this.investorPercentage = investorPercentage;}
 
-    public Double getInvestorProfit() {return investorProfit;}
+    public BigDecimal getInvestorProfit() {return investorProfit;}
 
-    public void setInvestorProfit(Double investorProfit) {this.investorProfit = investorProfit;}
+    public void setInvestorProfit(BigDecimal investorProfit) {this.investorProfit = investorProfit;}
 
-    public Double getAccumulatedProfit() {return accumulatedProfit;}
+    public BigDecimal getAccumulatedProfit() {return accumulatedProfit;}
 
-    public void setAccumulatedProfit(Double accumulatedProfit) {this.accumulatedProfit = accumulatedProfit;}
+    public void setAccumulatedProfit(BigDecimal accumulatedProfit) {this.accumulatedProfit = accumulatedProfit;}
 
-    public Double getTargetAmount() {return targetAmount;}
+    public BigDecimal getTargetAmount() {return targetAmount;}
 
-    public void setTargetAmount(Double targetAmount) {this.targetAmount = targetAmount;}
+    public void setTargetAmount(BigDecimal targetAmount) {this.targetAmount = targetAmount;}
 
-    public Double getRemainingToRecover() {return remainingToRecover;}
+    public BigDecimal getRemainingToRecover() {return remainingToRecover;}
 
-    public void setRemainingToRecover(Double remainingToRecover) {this.remainingToRecover = remainingToRecover;}
+    public void setRemainingToRecover(BigDecimal remainingToRecover) {this.remainingToRecover = remainingToRecover;}
+
+    public BigDecimal getAmountPaid() {return amountPaid;}
+
+    public void setAmountPaid(BigDecimal amountPaid) {this.amountPaid = amountPaid;}
+
+    public BigDecimal getPendingBalance() {return pendingBalance;}
+
+    public void setPendingBalance(BigDecimal pendingBalance) {this.pendingBalance = pendingBalance;}
 
     public String getNotes() {return notes;}
 
     public void setNotes(String notes) {this.notes = notes;}
-
-    public Double getAmountPaid() {return amountPaid;}
-
-    public void setAmountPaid(Double amountPaid) {this.amountPaid = amountPaid;}
-
-    public Double getPendingBalance() {return pendingBalance;}
-
-    public void setPendingBalance(Double pendingBalance) {this.pendingBalance = pendingBalance;}
 }

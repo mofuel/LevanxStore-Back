@@ -1,6 +1,7 @@
 package com.levanxstore.persistence.entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "marketing_partners")
@@ -10,14 +11,14 @@ public class MarketingPartner extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String firstName;
 
+    @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false)
-    private Double creditsAmount = 0.0;
-
-    //Getters and Setters
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal creditsAmount = BigDecimal.ZERO;
 
     public Long getId() {return id;}
 
@@ -31,7 +32,7 @@ public class MarketingPartner extends BaseEntity{
 
     public void setLastName(String lastName) {this.lastName = lastName;}
 
-    public Double getCreditsAmount() {return creditsAmount;}
+    public BigDecimal getCreditsAmount() {return creditsAmount;}
 
-    public void setCreditsAmount(Double creditsAmount) {this.creditsAmount = creditsAmount;}
+    public void setCreditsAmount(BigDecimal creditsAmount) {this.creditsAmount = creditsAmount;}
 }

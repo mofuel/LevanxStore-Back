@@ -1,20 +1,18 @@
 package com.levanxstore.domain.dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class SaleDTO {
-
     private Long id;
     private LocalDateTime date;
     private Long customerId;
     private String customerFirstName;
     private String customerLastName;
     private String customerPhone;
-    private Double totalAmount;
+    private BigDecimal totalAmount;
     private String paymentMethod;
     private String status;
-
-    //Getters and Setters
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -28,8 +26,8 @@ public class SaleDTO {
     public void setCustomerLastName(String customerLastName) { this.customerLastName = customerLastName; }
     public String getCustomerPhone() { return customerPhone; }
     public void setCustomerPhone(String customerPhone) { this.customerPhone = customerPhone; }
-    public Double getTotalAmount() { return totalAmount; }
-    public void setTotalAmount(Double totalAmount) { this.totalAmount = totalAmount; }
+    public BigDecimal getTotalAmount() { return totalAmount; }
+    public void setTotalAmount(BigDecimal totalAmount) { this.totalAmount = totalAmount; }
     public String getPaymentMethod() { return paymentMethod; }
     public void setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; }
     public String getStatus() { return status; }

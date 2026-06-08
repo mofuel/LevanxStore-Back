@@ -1,16 +1,20 @@
 package com.levanxstore.persistence.entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "sales")
+@Table(name = "sales", indexes = {
+    @Index(name = "idx_sale_customer", columnList = "customer_id")
+})
 public class Sale extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private LocalDateTime date;
 
     @ManyToOne
@@ -23,12 +27,15 @@ public class Sale extends BaseEntity{
 
     private String customerPhone;
 
-    private Double totalAmount;
+    @Column(nullable = false, precision = 12, scale = 2)
+    private BigDecimal totalAmount;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private PaymentMethod paymentMethod;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private SaleStatus status;
 
     public enum PaymentMethod {
@@ -41,8 +48,6 @@ public class Sale extends BaseEntity{
         PAID,
         CANCELED
     }
-
-    //Getters and Setters
 
     public Long getId() {return id;}
 
@@ -68,9 +73,9 @@ public class Sale extends BaseEntity{
 
     public void setCustomerLastName(String customerLastName) {this.customerLastName = customerLastName;}
 
-    public Double getTotalAmount() {return totalAmount;}
+    public BigDecimal getTotalAmount() {return totalAmount;}
 
-    public void setTotalAmount(Double totalAmount) {this.totalAmount = totalAmount;}
+    public void setTotalAmount(BigDecimal totalAmount) {this.totalAmount = totalAmount;}
 
     public PaymentMethod getPaymentMethod() {return paymentMethod;}
 

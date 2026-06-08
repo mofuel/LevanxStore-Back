@@ -1,13 +1,12 @@
 package com.levanxstore.domain.dto;
 
-public class MarketingPartnerDTO {
+import java.math.BigDecimal;
 
+public class MarketingPartnerDTO {
     private Long id;
     private String firstName;
     private String lastName;
-    private Double creditsAmount;
-
-    //Getters and Setters
+    private BigDecimal creditsAmount;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -15,8 +14,6 @@ public class MarketingPartnerDTO {
     public void setFirstName(String firstName) { this.firstName = firstName; }
     public String getLastName() { return lastName; }
     public void setLastName(String lastName) { this.lastName = lastName; }
-    public Double getCreditsAmount() { return creditsAmount; }
-    public void setCreditsAmount(Double creditsAmount) { this.creditsAmount = creditsAmount; }
-
-    
+    public BigDecimal getCreditsAmount() { return creditsAmount; }
+    public void setCreditsAmount(BigDecimal creditsAmount) { this.creditsAmount = creditsAmount; }
 }

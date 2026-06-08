@@ -1,16 +1,20 @@
 package com.levanxstore.persistence.entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "expenses")
+@Table(name = "expenses", indexes = {
+    @Index(name = "idx_expense_supplier", columnList = "supplier_id")
+})
 public class Expense extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private LocalDateTime date;
 
     @ManyToOne
@@ -21,19 +25,20 @@ public class Expense extends BaseEntity{
 
     private Integer quantity;
 
-    private Double unitCost;
+    @Column(precision = 10, scale = 2)
+    private BigDecimal unitCost;
 
-    private Double totalAmount;
+    @Column(nullable = false, precision = 12, scale = 2)
+    private BigDecimal totalAmount;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private ExpenseStatus status;
 
     public enum ExpenseStatus {
         ACTIVE,
         CANCELED
     }
-
-    //Getters and Setters
 
     public Long getId() {return id;}
 
@@ -55,13 +60,13 @@ public class Expense extends BaseEntity{
 
     public void setQuantity(Integer quantity) {this.quantity = quantity;}
 
-    public Double getUnitCost() {return unitCost;}
+    public BigDecimal getUnitCost() {return unitCost;}
 
-    public void setUnitCost(Double unitCost) {this.unitCost = unitCost;}
+    public void setUnitCost(BigDecimal unitCost) {this.unitCost = unitCost;}
 
-    public Double getTotalAmount() {return totalAmount;}
+    public BigDecimal getTotalAmount() {return totalAmount;}
 
-    public void setTotalAmount(Double totalAmount) {this.totalAmount = totalAmount;}
+    public void setTotalAmount(BigDecimal totalAmount) {this.totalAmount = totalAmount;}
 
     public ExpenseStatus getStatus() {return status;}
 
