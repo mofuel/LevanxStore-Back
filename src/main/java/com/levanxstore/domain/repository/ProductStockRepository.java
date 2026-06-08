@@ -19,5 +19,5 @@ public interface ProductStockRepository {
     Optional<ProductStockDTO> findByProductIdAndModelId(Long productId, Long modelId);
 
     void deleteById(Long id);
-    
+
 }
