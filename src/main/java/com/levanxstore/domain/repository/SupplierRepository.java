@@ -15,5 +15,5 @@ public interface SupplierRepository {
     List<SupplierDTO> findAll();
 
     void deleteById(Long id);
-    
+
 }
