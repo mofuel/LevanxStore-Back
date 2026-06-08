@@ -6,7 +6,6 @@ import com.levanxstore.persistence.crud.SaleItemCrudRepository;
 import com.levanxstore.persistence.entity.SaleItem;
 import com.levanxstore.persistence.mapper.SaleItemMapper;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

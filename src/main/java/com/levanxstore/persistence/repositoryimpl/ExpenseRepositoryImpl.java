@@ -6,7 +6,6 @@ import com.levanxstore.persistence.crud.ExpenseCrudRepository;
 import com.levanxstore.persistence.entity.Expense;
 import com.levanxstore.persistence.mapper.ExpenseMapper;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
