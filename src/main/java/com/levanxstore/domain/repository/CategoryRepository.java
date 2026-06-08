@@ -17,5 +17,5 @@ public interface CategoryRepository {
     boolean existsByName(String name);
 
     void deleteById(Long id);
-    
+
 }
