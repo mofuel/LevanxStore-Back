@@ -7,5 +7,5 @@ import java.util.Optional;
 public interface CustomerCrudRepository extends JpaRepository<Customer, Long> {
 
     Optional<Customer> findByPhone(String phone);
-    
+
 }
