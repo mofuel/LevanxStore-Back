@@ -7,5 +7,5 @@ import java.util.List;
 public interface SaleItemCrudRepository extends JpaRepository<SaleItem, Long> {
 
     List<SaleItem> findBySaleId(Long saleId);
-    
+
 }
