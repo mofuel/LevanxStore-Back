@@ -15,7 +15,7 @@ public interface LoyaltyAccountRepository {
     Optional<LoyaltyAccountDTO> findByCustomerId(Long customerId);
 
     Optional<LoyaltyAccountDTO> findByToken(String token);
-    
+
     void deleteById(Long id);
 
 }
