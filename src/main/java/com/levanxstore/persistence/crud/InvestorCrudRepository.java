@@ -9,5 +9,5 @@ public interface InvestorCrudRepository extends JpaRepository<Investor, Long> {
     Optional<Investor> findByPhone(String phone);
 
     Optional<Investor> findByEmail(String email);
-    
+
 }
