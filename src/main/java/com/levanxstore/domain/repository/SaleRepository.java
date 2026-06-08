@@ -17,5 +17,5 @@ public interface SaleRepository {
     List<SaleDTO> findByStatus(String status);
 
     void deleteById(Long id);
-    
+
 }
