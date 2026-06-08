@@ -7,6 +7,7 @@ import java.util.List;
 public interface ExpenseCrudRepository extends JpaRepository<Expense, Long> {
 
     List<Expense> findBySupplierId(Long supplierId);
-    
+
     List<Expense> findByStatus(Expense.ExpenseStatus status);
+
 }
