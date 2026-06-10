@@ -31,6 +31,10 @@ public class SaleItem extends BaseEntity {
     @Column(nullable = false, precision = 12, scale = 2)
     private BigDecimal subtotal;
 
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal discountAmount = BigDecimal.ZERO;
+
+
     public Long getId() {return id;}
 
     public void setId(Long id) {this.id = id;}
@@ -54,4 +58,8 @@ public class SaleItem extends BaseEntity {
     public BigDecimal getSubtotal() {return subtotal;}
 
     public void setSubtotal(BigDecimal subtotal) {this.subtotal = subtotal;}
+
+    public BigDecimal getDiscountAmount() { return discountAmount; }
+
+    public void setDiscountAmount(BigDecimal discountAmount) { this.discountAmount = discountAmount; }
 }

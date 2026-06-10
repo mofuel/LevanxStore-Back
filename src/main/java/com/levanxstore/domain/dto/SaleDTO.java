@@ -14,6 +14,9 @@ public class SaleDTO {
     private String paymentMethod;
     private String status;
 
+    private String receiptNumber;
+
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public LocalDateTime getDate() { return date; }
@@ -32,4 +35,6 @@ public class SaleDTO {
     public void setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; }
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+    public String getReceiptNumber() { return receiptNumber; }
+    public void setReceiptNumber(String receiptNumber) { this.receiptNumber = receiptNumber; }
 }

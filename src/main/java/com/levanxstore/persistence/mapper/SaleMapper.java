@@ -9,8 +9,6 @@ import org.mapstruct.Mapping;
 public interface SaleMapper {
 
     @Mapping(target = "customerId", source = "customer.id")
-    @Mapping(target = "paymentMethod", source = "paymentMethod")
-    @Mapping(target = "status", source = "status")
     SaleDTO toDto(Sale sale);
 
     @Mapping(target = "customer", ignore = true)

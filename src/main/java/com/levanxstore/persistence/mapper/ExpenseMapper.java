@@ -10,7 +10,6 @@ public interface ExpenseMapper {
 
     @Mapping(target = "supplierId", source = "supplier.id")
     @Mapping(target = "supplierName", source = "supplier.name")
-    @Mapping(target = "status", source = "status")
     ExpenseDTO toDto(Expense expense);
 
     @Mapping(target = "supplier", ignore = true)

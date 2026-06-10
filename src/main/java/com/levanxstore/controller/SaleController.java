@@ -1,10 +1,14 @@
 package com.levanxstore.controller;
 
+import com.levanxstore.domain.dto.CreateSaleRequestDTO;
 import com.levanxstore.domain.dto.SaleDTO;
+import com.levanxstore.domain.dto.SaleItemDTO;
+import com.levanxstore.domain.dto.SaleResponseDTO;
 import com.levanxstore.domain.service.SaleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -38,6 +42,24 @@ public class SaleController {
     public ResponseEntity<SaleDTO> create(@RequestBody SaleDTO dto) {
         SaleDTO saved = saleService.save(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    }
+
+    @PostMapping("/full")
+    public ResponseEntity<SaleResponseDTO> createFull(@RequestBody CreateSaleRequestDTO request) {
+        SaleResponseDTO result = saleService.createSale(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
+    }
+
+    @PatchMapping("/{id}/cancel")
+    public ResponseEntity<SaleDTO> cancel(@PathVariable Long id) {
+        SaleDTO cancelled = saleService.cancelSale(id);
+        return ResponseEntity.ok(cancelled);
+    }
+
+    @PatchMapping("/{id}/items/{itemId}/return")
+    public ResponseEntity<SaleItemDTO> returnItem(@PathVariable Long id, @PathVariable Long itemId) {
+        SaleItemDTO returned = saleService.returnItem(id, itemId);
+        return ResponseEntity.ok(returned);
     }
 
     @DeleteMapping("/{id}")

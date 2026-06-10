@@ -3,8 +3,12 @@ package com.levanxstore.persistence.repositoryimpl;
 import com.levanxstore.domain.dto.InvestorReportDTO;
 import com.levanxstore.domain.repository.InvestorReportRepository;
 import com.levanxstore.persistence.crud.InvestorReportCrudRepository;
+import com.levanxstore.persistence.entity.Investor;
 import com.levanxstore.persistence.entity.InvestorReport;
 import com.levanxstore.persistence.mapper.InvestorReportMapper;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
@@ -16,14 +20,21 @@ public class InvestorReportRepositoryImpl implements InvestorReportRepository {
     private final InvestorReportCrudRepository crudRepository;
     private final InvestorReportMapper mapper;
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     public InvestorReportRepositoryImpl(InvestorReportCrudRepository crudRepository, InvestorReportMapper mapper) {
         this.crudRepository = crudRepository;
         this.mapper = mapper;
     }
 
     @Override
+    @Transactional
     public InvestorReportDTO save(InvestorReportDTO investorReportDTO) {
         InvestorReport entity = mapper.toEntity(investorReportDTO);
+        if (investorReportDTO.getInvestorId() != null) {
+            entity.setInvestor(entityManager.getReference(Investor.class, investorReportDTO.getInvestorId()));
+        }
         return mapper.toDto(crudRepository.save(entity));
     }
 

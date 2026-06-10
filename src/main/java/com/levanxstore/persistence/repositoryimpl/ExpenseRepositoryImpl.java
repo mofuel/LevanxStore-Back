@@ -4,7 +4,11 @@ import com.levanxstore.domain.dto.ExpenseDTO;
 import com.levanxstore.domain.repository.ExpenseRepository;
 import com.levanxstore.persistence.crud.ExpenseCrudRepository;
 import com.levanxstore.persistence.entity.Expense;
+import com.levanxstore.persistence.entity.Supplier;
 import com.levanxstore.persistence.mapper.ExpenseMapper;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
@@ -16,14 +20,21 @@ public class ExpenseRepositoryImpl implements ExpenseRepository {
     private final ExpenseCrudRepository crudRepository;
     private final ExpenseMapper mapper;
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     public ExpenseRepositoryImpl(ExpenseCrudRepository crudRepository, ExpenseMapper mapper) {
         this.crudRepository = crudRepository;
         this.mapper = mapper;
     }
 
     @Override
+    @Transactional
     public ExpenseDTO save(ExpenseDTO expenseDTO) {
         Expense entity = mapper.toEntity(expenseDTO);
+        if (expenseDTO.getSupplierId() != null) {
+            entity.setSupplier(entityManager.getReference(Supplier.class, expenseDTO.getSupplierId()));
+        }
         return mapper.toDto(crudRepository.save(entity));
     }
 

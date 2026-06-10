@@ -20,4 +20,6 @@ public interface ProductStockRepository {
 
     void deleteById(Long id);
 
+    ProductStockDTO adjustStock(Long id, int delta);
+
 }

@@ -18,7 +18,7 @@ public class Expense extends BaseEntity{
     private LocalDateTime date;
 
     @ManyToOne
-    @JoinColumn(name = "supplier_id")
+    @JoinColumn(name = "supplier_id", nullable = false)
     private Supplier supplier;
 
     private String description;

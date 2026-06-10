@@ -33,6 +33,13 @@ public class ProductStock extends BaseEntity{
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal salePrice;
 
+    private Integer minStock = 0;
+
+    @Version
+    private Long version;
+
+    public Long getVersion() { return version; }
+
     public Long getId() {return id;}
 
     public void setId(Long id) {this.id = id;}
@@ -56,4 +63,8 @@ public class ProductStock extends BaseEntity{
     public BigDecimal getCostPrice() {return costPrice;}
 
     public void setCostPrice(BigDecimal costPrice) {this.costPrice = costPrice;}
+
+    public Integer getMinStock() { return minStock; }
+
+    public void setMinStock(Integer minStock) { this.minStock = minStock; }
 }

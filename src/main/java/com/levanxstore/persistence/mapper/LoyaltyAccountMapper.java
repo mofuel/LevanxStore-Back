@@ -8,8 +8,8 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface LoyaltyAccountMapper {
 
-    @Mapping(target = "customerId", source = "customer.id")
-    @Mapping(target = "customerName", expression = "java(loyaltyAccount.getCustomer().getFirstName() + \" \" + loyaltyAccount.getCustomer().getLastName())")
+    @Mapping(target = "customerId", expression = "java(loyaltyAccount.getCustomer() != null ? loyaltyAccount.getCustomer().getId() : null)")
+    @Mapping(target = "customerName", expression = "java(loyaltyAccount.getCustomer() != null ? loyaltyAccount.getCustomer().getFirstName() + \" \" + loyaltyAccount.getCustomer().getLastName() : null)")
     LoyaltyAccountDTO toDto(LoyaltyAccount loyaltyAccount);
 
     @Mapping(target = "customer", ignore = true)

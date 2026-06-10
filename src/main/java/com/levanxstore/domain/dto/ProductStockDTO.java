@@ -13,6 +13,9 @@ public class ProductStockDTO {
     private BigDecimal costPrice;
     private BigDecimal salePrice;
 
+    private Integer minStock;
+
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public Long getProductId() { return productId; }
@@ -31,4 +34,6 @@ public class ProductStockDTO {
     public void setCostPrice(BigDecimal costPrice) { this.costPrice = costPrice; }
     public BigDecimal getSalePrice() { return salePrice; }
     public void setSalePrice(BigDecimal salePrice) { this.salePrice = salePrice; }
+    public Integer getMinStock() { return minStock; }
+    public void setMinStock(Integer minStock) { this.minStock = minStock; }
 }

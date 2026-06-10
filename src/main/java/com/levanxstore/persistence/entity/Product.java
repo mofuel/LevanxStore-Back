@@ -16,7 +16,7 @@ public class Product extends BaseEntity{
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     private Boolean active = true;

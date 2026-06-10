@@ -17,6 +17,10 @@ public class Sale extends BaseEntity{
     @Column(nullable = false)
     private LocalDateTime date;
 
+    @Column(unique = true)
+    private String receiptNumber;
+
+
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
@@ -84,4 +88,8 @@ public class Sale extends BaseEntity{
     public SaleStatus getStatus() {return status;}
 
     public void setStatus(SaleStatus status) {this.status = status;}
+
+    public String getReceiptNumber() { return receiptNumber; }
+
+    public void setReceiptNumber(String receiptNumber) { this.receiptNumber = receiptNumber; }
 }

@@ -11,6 +11,9 @@ public class SaleItemDTO {
     private BigDecimal unitPrice;
     private BigDecimal subtotal;
 
+    private BigDecimal discountAmount;
+
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public Long getSaleId() { return saleId; }
@@ -25,4 +28,6 @@ public class SaleItemDTO {
     public void setUnitPrice(BigDecimal unitPrice) { this.unitPrice = unitPrice; }
     public BigDecimal getSubtotal() { return subtotal; }
     public void setSubtotal(BigDecimal subtotal) { this.subtotal = subtotal; }
+    public BigDecimal getDiscountAmount() { return discountAmount; }
+    public void setDiscountAmount(BigDecimal discountAmount) { this.discountAmount = discountAmount; }
 }
